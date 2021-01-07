@@ -21,6 +21,11 @@ public class DrillMovement : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            if (SoundControl.SoundControler == 0 && SoundControl.SoundControler != 10 && SoundControl.SoundControler != 15)
+            {
+                SoundControl.SoundControler = 5;
+            }
+            
             Transform myTransform = this.transform;
             // 座標を取得
             Vector3 pos = myTransform.position;
@@ -33,6 +38,7 @@ public class DrillMovement : MonoBehaviour
         }
         else
         {
+            SoundControl.SoundControler = 0;
             this.screenPoint = Camera.main.WorldToScreenPoint(transform.position);
             Vector3 TouchPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
             transform.position = Camera.main.ScreenToWorldPoint(TouchPosition);
