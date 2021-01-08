@@ -66,10 +66,10 @@
     <Compile Include="Assets\Script\Play\DrillMovement.cs" />
     <Compile Include="Assets\Script\Play\Rock.cs" />
     <Compile Include="Assets\Script\Play\SoundControl.cs" />
+    <Compile Include="Assets\Script\SpidarMouseController.cs" />
     <Compile Include="Assets\Script\Title\IronButton.cs" />
     <Compile Include="Assets\Script\Title\RockButton.cs" />
     <Compile Include="Assets\Script\Title\WoodButton.cs" />
-    <Compile Include="Assets\Script\debugText.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
