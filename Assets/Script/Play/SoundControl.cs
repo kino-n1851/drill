@@ -31,7 +31,7 @@ public class SoundControl : MonoBehaviour
                     GetComponents<AudioSource>()[1].Stop();
                     GetComponents<AudioSource>()[2].Stop();
                     GetComponents<AudioSource>()[0].Play();
-                    Debug.Log("SoundPlaying");
+                    //Debug.Log("SoundPlaying");
                     break;
                 // 押し付けている
                 case 10:

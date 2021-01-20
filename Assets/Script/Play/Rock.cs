@@ -5,7 +5,12 @@ using UnityEngine;
 public class Rock : MonoBehaviour
 {
     private float countup = 0;
-    public static float HP;
+    public static float HP = 30;
+    private PlayManager manager;
+    private void Start()
+    { GameObject.Find("PlayManagerObj");
+        manager = GameObject.Find("PlayManagerObj").GetComponent<PlayManager>();
+    }
 
     private void Update()
     {
@@ -16,24 +21,25 @@ public class Rock : MonoBehaviour
     {
         if (other.gameObject.tag == "OverDig")
         {
-            Debug.Log("OVERDIG");
+            //Debug.Log("OVERDIG");
 
             if (SoundControl.SoundControler != 10)
             {
                 SoundControl.SoundControler = 10;
             }
 
-            countup += Time.deltaTime * 20;
+            countup += Time.deltaTime * 10;
 
             if (countup >= HP)
             {
+                manager.RemoveRockName(this.name);
                 Destroy(this.gameObject);
                 SoundControl.SoundControler = 5;
             }
         }
         else if (other.gameObject.tag == "GoodDig")
         {
-            Debug.Log("GOODDIG");
+            //Debug.Log("GOODDIG");
 
             if (SoundControl.SoundControler != 15)
             {
@@ -44,6 +50,7 @@ public class Rock : MonoBehaviour
 
             if (countup >= HP)
             {
+                manager.RemoveRockName(this.name);
                 Destroy(this.gameObject);
                 SoundControl.SoundControler = 5;
             }

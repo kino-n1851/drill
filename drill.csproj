@@ -315,6 +315,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\debugText.cs" />
     <Compile Include="Assets\Script\Play\DrillMovement.cs" />
+    <Compile Include="Assets\Script\Play\fossil.cs" />
     <Compile Include="Assets\Script\Play\Rock.cs" />
     <Compile Include="Assets\Script\Play\SoundControl.cs" />
     <Compile Include="Assets\Script\SpidarMouseController.cs" />

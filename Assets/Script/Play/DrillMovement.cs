@@ -16,10 +16,15 @@ public class DrillMovement : MonoBehaviour
     Vector3 screenPoint;
 
     public const int MoveSound = 0;
+    private PlayManager playManager;
+    void Start()
+    {
+        playManager = GameObject.Find("PlayManagerObj").GetComponent < PlayManager > ();
+    }
     
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && playManager.GetIsNotHalt())
         {
             if (SoundControl.SoundControler == 0 && SoundControl.SoundControler != 10 && SoundControl.SoundControler != 15)
             {
@@ -36,11 +41,11 @@ public class DrillMovement : MonoBehaviour
             targetPosition.z = Mathf.Clamp(transform.position.z, ZMinMoveRange, ZMaxMoveRange) ;
             transform.position = new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
         }
-        else
+        else if(playManager.GetIsNotHalt())
         {
             SoundControl.SoundControler = 0;
             this.screenPoint = Camera.main.WorldToScreenPoint(transform.position);
-            Vector3 TouchPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
+            Vector3 TouchPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 14);
             transform.position = Camera.main.ScreenToWorldPoint(TouchPosition);
             //Debug.Log(screenPoint.z);
             num = 0;
