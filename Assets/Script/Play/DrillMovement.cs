@@ -27,6 +27,7 @@ public class DrillMovement : MonoBehaviour
     {
         if (isTriggerEnter() && playManager.GetIsNotHalt())
         {
+            // 効果音を設定する値の変更
             if (SoundControl.SoundControler == 0 && SoundControl.SoundControler != 10 && SoundControl.SoundControler != 15)
             {
                 SoundControl.SoundControler = 5;
@@ -35,16 +36,18 @@ public class DrillMovement : MonoBehaviour
             Transform myTransform = this.transform;
             // 座標を取得
             Vector3 pos = myTransform.position;
-
+            //　ドリルのZ座標の変更
             DrillZMovement();
-
+            
             Vector3 targetPosition = transform.position;
             targetPosition.z = Mathf.Clamp(transform.position.z, ZMinMoveRange, ZMaxMoveRange) ;
             transform.position = new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
         }
         else if(playManager.GetIsNotHalt())
         {
+            // 効果音を設定する値の変更
             SoundControl.SoundControler = 0;
+            // ドリルのXY座標の取得
             this.screenPoint = Camera.main.WorldToScreenPoint(transform.position);
             Vector3 TouchPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 14);
             transform.position = Camera.main.ScreenToWorldPoint(TouchPosition);
@@ -54,12 +57,14 @@ public class DrillMovement : MonoBehaviour
         //Debug.Log(transform.position);
     }
     
+    // ドリルのZ座標を変更する関数
     private void DrillZMovement()
     {
         Transform myTransform = this.transform;
         // 座標を取得
         Vector3 pos = myTransform.position;
 
+        // マウスのy座標が変化した分だけZ座標を変更
         while (num == 0)
         {
             num++;
@@ -77,6 +82,7 @@ public class DrillMovement : MonoBehaviour
         myTransform.position = pos;
     }
 
+    
     private bool isTriggerEnter() 
     {
         switch (triggerMode) 
