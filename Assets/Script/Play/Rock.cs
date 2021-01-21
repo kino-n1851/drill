@@ -22,14 +22,15 @@ public class Rock : MonoBehaviour
         if (other.gameObject.tag == "OverDig")
         {
             //Debug.Log("OVERDIG");
-
+            // ドリルの効果音の設定
             if (SoundControl.SoundControler != 10)
             {
                 SoundControl.SoundControler = 10;
             }
 
             countup += Time.deltaTime * 10;
-
+            
+            // ブロックの耐久値が0以下になったときの処理
             if (countup >= HP)
             {
                 manager.RemoveRockName(this.name);
@@ -40,14 +41,15 @@ public class Rock : MonoBehaviour
         else if (other.gameObject.tag == "GoodDig")
         {
             //Debug.Log("GOODDIG");
-
+            // ドリルの効果音の設定
             if (SoundControl.SoundControler != 15)
             {
                 SoundControl.SoundControler = 15;
             }
 
             countup += Time.deltaTime * 40;
-
+            
+            // ブロックの耐久値が0以下になったときの処理
             if (countup >= HP)
             {
                 manager.RemoveRockName(this.name);
@@ -56,7 +58,7 @@ public class Rock : MonoBehaviour
             }
         }
     }
-
+    // ブロックが何にもあたっていないときの処理
     private void OnCollisionExit(Collision collision)
     {
         SoundControl.SoundControler = 5;
