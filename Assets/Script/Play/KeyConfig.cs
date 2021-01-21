@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class KeyConfig : MonoBehaviour
 {
     [SerializeField] private  Dropdown dropdown;
+    private DrillMovement drillmovement;
     // Start is called before the first frame update
     void Start()
     {
-        
+        drillmovement = GameObject.Find("Drill").GetComponent<DrillMovement>();
     }
 
     // Update is called once per frame
@@ -20,19 +21,6 @@ public class KeyConfig : MonoBehaviour
 
     public void ChangeButton()
     {
-        if (dropdown.value == 0)
-        {
-            cube.GetComponent<Renderer>().material.color = Color.red;
-        }
-        //DropdownのValueが1のとき（青が選択されているとき）
-        else if (dropdown.value == 1)
-        {
-            cube.GetComponent<Renderer>().material.color = Color.blue;
-        }
-        //DropdownのValueが2のとき（黄が選択されているとき）
-        else if (dropdown.value == 2)
-        {
-            cube.GetComponent<Renderer>().material.color = Color.yellow;
-        }
+        if(dropdown.value > -1 && dropdown.value < 3)drillmovement.setTriggerMode(dropdown.value);
     }
 }

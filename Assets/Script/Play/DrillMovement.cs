@@ -9,6 +9,7 @@ public class DrillMovement : MonoBehaviour
     private float zPos;
     private float temp;
     private int num = 0;
+    private int triggerMode = 0;
 
     public float ZMinMoveRange;
     public float ZMaxMoveRange;
@@ -24,7 +25,7 @@ public class DrillMovement : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButton(0) && playManager.GetIsNotHalt())
+        if (isTriggerEnter() && playManager.GetIsNotHalt())
         {
             if (SoundControl.SoundControler == 0 && SoundControl.SoundControler != 10 && SoundControl.SoundControler != 15)
             {
@@ -74,5 +75,28 @@ public class DrillMovement : MonoBehaviour
         //Debug.Log(zPos - temp);
         temp = zPos;
         myTransform.position = pos;
+    }
+
+    private bool isTriggerEnter() 
+    {
+        switch (triggerMode) 
+        {
+            case 0:
+                return Input.GetMouseButton(0);
+
+            case 1:
+                return Input.GetMouseButton(1);
+
+            case 2:
+                return Input.GetKey(KeyCode.Return);
+
+            default:
+                return false;
+        }
+    }
+
+    public void setTriggerMode(int mode) 
+    {
+        triggerMode = mode;
     }
 }
